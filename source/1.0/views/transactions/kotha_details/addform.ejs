@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CPFMS</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="/css/master-index.css">
+    <link rel="stylesheet" href="/css/master/account_balance.css">
+    <style>
+        table tr td {
+            margin: 0 !important;
+            padding: 3px 5px 5px 0 !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+
+    <main>
+        <div class="container" style="background-color: #DBFFFB; width: 98%">
+            <%- include('../../partials/err.ejs') %>
+            <h2 class="heading-text">Kotha Details</h2>
+            <form class="form-horizontal" id="mainForm" action="/kotha-details" method="POST">
+                <div class="table-responsive">
+                    <table class="table" style="width: 100%; border: double;">
+                        <colgroup>
+                            <col span="1" style="width: 7%">
+                            <col span="1" style="width: 3%">
+                            <col span="1" style="width: 14%">
+                            <col span="1" style="width: 8%">
+                            <col span="1" style="width: 3%">
+                            <col span="1" style="width: 65%">
+                        </colgroup>
+                        <tbody>
+                            <tr style="width: 100%;">
+                                <td class="label-text" style="text-align: center;">Society</td>
+                                <td><b>:</b></td>
+                                <td id="table_account_id">
+                                    <select class="form-control selectpicker" data-live-search="true"
+                                        data-size="5" name="account_id" id="id_list" required>
+                                        <% for(item of account_head){ %>
+                                        <option><%= item.account_id %></option>
+                                        <% } %>
+                                    </select>
+                                </td>
+                                <td class="label-text" style="text-align: center;">Society Name</td>
+                                <td><b>:</b></td>
+                                <td id="table_account_name">
+                                    <input type="text" name="account_name" id="account_name" style="width: 100%;" disabled>
+                                </td>
+                            </tr>
+                            <tr style="height: 50px !important;">
+                                <td colspan="6"></td>
+                            </tr>
+                            <tr>
+                                <td class="label-text" style="text-align: center;">Member</td>
+                                <td><b>:</b></td>
+                                <td id="table_sub_account_id">
+                                    <select class="form-control selectpicker" data-live-search="true"
+                                        data-size="5" name="sub_account_id" id="sub_id_list" required>
+                                    </select>
+                                </td>
+                                <td class="label-text" style="text-align: center;">Member Name</td>
+                                <td><b>:</b></td>
+                                <td id="table_sub_account_name">
+                                    <input type="text" name="sub_account_name" id="sub_account_name" style="width: 100%;" disabled>
+                                </td>
+                            </tr>
+                            <tr style="height: 50px !important;">
+                                <td colspan="6"></td>
+                            </tr>
+                            <tr>
+                                <td class="label-text" style="text-align: center;">Issue Date</td>
+                                <td><b>:</b></td>
+                                <td id="table_issue_date">
+                                    <input type="date" name="issue_date" id="issue_date">
+                                </td>
+                                <td class="label-text" style="text-align: center;">Change Issue Date</td>
+                                <td><b>:</b></td>
+                                <td id="table_change_issue_date">
+                                    <input type="checkbox" name="change_issue_date">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="width: auto !important;text-align: center; border: 2px solid black;">Month ID</th>
+                                <th style="width: auto !important;text-align: center; border: 2px solid black;">Item 1</th>
+                                <th style="width: auto !important;text-align: center; border: 2px solid black;">Item 2</th>
+                                <th style="width: auto !important;text-align: center; border: 2px solid black;">Item 3</th>
+                                <th style="width: auto !important;text-align: center; border: 2px solid black;">Item 4</th>
+                                <th style="border: 2px solid black;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="entries">
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <a href="#" onclick="addentry()" class="btn btn-success" data-toggle="modal"><b>Add New Entry</b></a>
+                </div>
+                <div style="margin: 10px; padding: 0px 15px 0px 0px;height: 50px; text-align: right;">   
+                    <button class="btn btn-lg btn-success" type="submit">Submit</button>
+                    <a href="/kotha-details"><button class="btn btn-lg btn-danger" type="button">Cancel</button></a>
+                </div>
+            </form>
+        </div>
+    </main>
+    <!-- Edit Modal HTML -->
+    <div id="editEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <form id="item_edit">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title"><b><u>Edit Item Entry</u></b></h3>
+                        <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label><i>Month ID</i></label>
+                            <input type="number" class="form-control" name="month_id"
+                                placeholder="Enter Month ID" id="input-disabled" min="1" step="1" required
+                                readonly>
+                        </div>
+                        <div class="form-group">
+                            <label><i>Item 1</i></label>
+                            <input type="text" class="form-control" name="item1" placeholder="Item 1" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i>Item 2</i></label>
+                            <input type="text" class="form-control" name="item2" placeholder="Item 2" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i>Item 3</i></label>
+                            <input type="text" class="form-control" name="item3" placeholder="Item 3" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i>Item 4</i></label>
+                            <input type="text" class="form-control" name="item4" placeholder="Item 4" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-info" value="Save">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Add Modal HTML -->
+    <div id="addEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <form id="item_add">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title"><b><u>Add Item Entry</u></b></h3>
+                        <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label><i>Month ID</i></label>
+                            <input type="number" class="form-control" name="month_id"
+                                placeholder="Enter Month ID" id="input-disabled" min="1" step="1" required
+                                readonly>
+                        </div>
+                        <div class="form-group">
+                            <label><i>Item 1</i></label>
+                            <input type="text" class="form-control" name="item1" placeholder="Item 1" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i>Item 2</i></label>
+                            <input type="text" class="form-control" name="item2" placeholder="Item 2" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i>Item 3</i></label>
+                            <input type="text" class="form-control" name="item3" placeholder="Item 3" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i>Item 4</i></label>
+                            <input type="text" class="form-control" name="item4" placeholder="Item 4" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-success" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Delete Modal HTML -->
+    <div id="deleteEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="item_delete">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Item Entry</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure ...?<br>Do want to delete this Record ?</p>
+                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="hidden-input"></div>
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"
+                            id="cancel">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var entries = <%- JSON.stringify(data) %>;
+        var delete_index = -1;
+
+        function fillallentries() {
+            if (entries.length === 0) {
+                $("#entries").empty();
+            }
+            else {
+                $("#entries").empty();
+                for (i = 0; i < entries.length; i++) {
+                    entryob = entries[i];
+                    var inhtml = `
+                        <tr id="${i}" align="center">
+                            <td style="border: 2px solid black;">
+                                ${i+1}
+                            </td>
+                            <td style="border: 2px solid black;">
+                                ${entryob.item1}
+                            </td>
+                            <td style="border: 2px solid black;">
+                                ${entryob.item2}
+                            </td>
+                            <td style="border: 2px solid black;">
+                                ${entryob.item3}
+                            </td>
+                            <td style="border: 2px solid black;">
+                                ${entryob.item4}
+                            </td>
+                            <td style="border: 2px solid black;">
+                                <a href="#" onclick="editentry(${i})" class="edit" data-toggle="modal"
+                                    id="${i}"><i class="material-icons" data-toggle="tooltip"
+                                        title="Edit">&#xE254;</i></a>
+                                <a href="#" onclick="deleteentry(${i})" class="delete" data-toggle="modal"
+                                    id="${i}"><i class="material-icons" data-toggle="tooltip"
+                                        title="Delete">&#xE872;</i></a>
+                            </td>
+                            <input type="hidden" name="item1s[${i}]" value="${entryob.item1}">
+                            <input type="hidden" name="item2s[${i}]" value="${entryob.item2}">
+                            <input type="hidden" name="item3s[${i}]" value="${entryob.item3}">
+                            <input type="hidden" name="item4s[${i}]" value="${entryob.item4}">
+                        </tr>
+                    `;
+                    $("#entries").append(inhtml);
+                }
+            }
+        }
+
+        function editentry(index) {
+            setTimeout(function () {
+                $("#editEmployeeModal input[name=item1]").focus();
+            }, 500);
+            var entryob = entries[index];
+            var item1 = entryob.item1;
+            var item2 = entryob.item2;
+            var item3 = entryob.item3;
+            var item4 = entryob.item4;
+            $("#editEmployeeModal input[name=month_id]").val(index+1);
+            $("#editEmployeeModal input[name=item1]").val(item1);
+            $("#editEmployeeModal input[name=item2]").val(item2);
+            $("#editEmployeeModal input[name=item3]").val(item3);
+            $("#editEmployeeModal input[name=item4]").val(item4);
+            $("#editEmployeeModal").modal('show');
+        }
+
+        function submit_editentry() {
+            var index = parseInt($("#editEmployeeModal input[name=month_id]").val()) - 1;
+            var item1 = $("#editEmployeeModal input[name=item1]").val();
+            var item2 = $("#editEmployeeModal input[name=item2]").val();
+            var item3 = $("#editEmployeeModal input[name=item3]").val();
+            var item4 = $("#editEmployeeModal input[name=item4]").val();
+            var entryob = {
+                item1,
+                item2,
+                item3,
+                item4
+            };
+            entries[index] = entryob;
+            fillallentries();
+            $("#editEmployeeModal").modal('hide');
+        }
+
+        function deleteentry(index) {
+            setTimeout(function () {
+                $("#deleteEmployeeModal .modal-footer #cancel").focus();
+            }, 500);
+            delete_index = index;
+            $("#deleteEmployeeModal").modal('show');
+        }
+
+        function submit_deleteentry() {
+            if (delete_index >= 0) {
+                entries.splice(delete_index, 1);
+                delete_index = -1;
+                fillallentries();
+            }
+            $("#deleteEmployeeModal").modal('hide');
+        }
+
+        function addentry() {
+            setTimeout(function () {
+                $("#addEmployeeModal input[name=item1]").focus();
+            }, 500);
+            var month_id = entries.length + 1;
+            $("#addEmployeeModal input[name=month_id]").val(month_id);
+            $("#addEmployeeModal input[name=item1]").val("-");
+            $("#addEmployeeModal input[name=item2]").val("-");
+            $("#addEmployeeModal input[name=item3]").val("-");
+            $("#addEmployeeModal input[name=item4]").val("-");
+            $("#addEmployeeModal").modal('show');
+        }
+
+        function submit_addentry() {
+            var item1 = $("#addEmployeeModal input[name=item1]").val();
+            var item2 = $("#addEmployeeModal input[name=item2]").val();
+            var item3 = $("#addEmployeeModal input[name=item3]").val();
+            var item4 = $("#addEmployeeModal input[name=item4]").val();
+            var entryob = {
+                item1,
+                item2,
+                item3,
+                item4
+            };
+            entries.push(entryob);
+            fillallentries();
+            $("#addEmployeeModal").modal('hide');
+        }
+
+        function changeSocMem() {
+            var acc_id = $("#id_list").selectpicker('val');
+            $.ajax({
+                url: '/api/transaction/account_details/' + acc_id,
+                success: function (res) {
+                    if (res.status == true) {
+                        var options = '';
+                        $("#sub_id_list").empty();
+                        $("#sub_id_list").selectpicker('refresh');
+                        for (sid of res.sub_account_id) {
+                            options = options + "<option>" + sid.sub_account_id + "</option>";
+                        }
+                        $("#sub_id_list").append(options);
+                        $("#sub_id_list").selectpicker('refresh');
+                        $("#account_name").val(res.account_name);
+                        changeMem();
+                    }
+                    else {
+                        alert('Error while getting Members!');
+                    }
+                },
+                error: function () {
+                    $('.loading').hide();
+                }
+            });
+        }
+
+        function changeMem() {
+            var sub_acc_id = $("#sub_id_list").selectpicker('val');
+            $.ajax({
+                url: '/api/transaction/kothamembername/' + sub_acc_id,
+                success: function (res) {
+                    if (res.status == true) {
+                        $("#sub_account_name").val(res.data.sub_account_name);
+                        if (res.issue_data)
+                            $("#issue_date").val(res.issue_data);
+                    }
+                    else {
+                        alert('Error while getting Members!');
+                    }
+                },
+                error: function () {
+                    $('.loading').hide();
+                }
+            });
+        }
+
+        function getTodayDate() {
+            var d = new Date();
+            var dd = ('0' + d.getDate()).slice(-2);
+            var mm = ('0' + (d.getMonth() + 1)).slice(-2);
+            var yyyy = d.getFullYear();
+            var date = yyyy + "-" + mm + "-" + dd;
+            return date;
+        }
+
+        $(document).ready(function () {
+        
+            $('.loading').hide();
+
+            fillallentries();
+            changeSocMem();
+            changeMem();
+
+            $("#issue_date").val(getTodayDate());
+
+            // Save Edit Entry
+            $('#item_edit').submit(function(e){
+                e.preventDefault();
+                submit_editentry();
+            });
+
+            // Submit Delete Request
+            $("#item_delete").submit(function(e){
+                e.preventDefault();
+                submit_deleteentry();
+            });
+
+            // Submit Add Request
+            $("#item_add").submit(function(e){
+                e.preventDefault();
+                console.log("Submitting new entry.");
+                submit_addentry();
+            });
+
+            $("#id_list").on("change", function () {
+                changeSocMem();
+            });
+
+            $("#sub_id_list").on("change", function () {
+                changeMem();
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
