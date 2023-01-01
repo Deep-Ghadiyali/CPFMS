@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CPFMS.Core.Entities.Base.BaseEntity" Collapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Base\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Base.IdNameBaseEntity" Collapsed="true">
+    <Position X="14.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Base\IdNameBaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Base.IdNarrationBaseEntity" Collapsed="true">
+    <Position X="31" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Base\IdNarrationBaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.Account" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAACAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\Master\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.KothaMonthlyItems" Collapsed="true">
+    <Position X="42.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAIBAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Entities\Master\KothaMonthlyItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.CowCast" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Master\MasterIdNameEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.District" Collapsed="true">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Master\MasterIdNameEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.Taluka" Collapsed="true">
+    <Position X="15.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Master\MasterIdNameEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.Village" Collapsed="true">
+    <Position X="19.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Master\MasterIdNameEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.Organization">
+    <Position X="22" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Master\MasterIdNameEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.ResourcePerson" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAABAAAAAAAACAAAAAAAAAQA=</HashCode>
+      <FileName>Entities\Master\ResourcePerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.SubAccount" Collapsed="true">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAACAAAAAAAAAQA=</HashCode>
+      <FileName>Entities\Master\SubAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Master.SubAccountDetails" Collapsed="true">
+    <Position X="40" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEASCAAAAIigAEAABgIEAASEAQAAAABBMQAAAAAAAAA=</HashCode>
+      <FileName>Entities\Master\SubAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Transaction.JV" Collapsed="true">
+    <Position X="31" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Entities\Transaction\JV.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Transaction.JVDetails" Collapsed="true">
+    <Position X="35.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAIAAAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Transaction\JV.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Transaction.KothaDetails" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAIBAAAAAAgIgAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Entities\Transaction\KothaDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Transaction.Ledger" Collapsed="true">
+    <Position X="26.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAIIAAAAAAAgIAAAAAAAAAAAEAAAAAEAAAAAA=</HashCode>
+      <FileName>Entities\Transaction\Ledger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Transaction.Payment" Collapsed="true">
+    <Position X="28.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAEQAAAAAAEAAACAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Entities\Transaction\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Transaction.PaymentDetails" Collapsed="true">
+    <Position X="33.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAAAAAgAKAAAAAAAAAAAABEAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Transaction\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Transaction.Receipt" Collapsed="true">
+    <Position X="37.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkAAQAAAAAACAAACAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Transaction\Receipt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPFMS.Core.Entities.Transaction.ReceiptDetails" Collapsed="true">
+    <Position X="24.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAACAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Entities\Transaction\Receipt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
